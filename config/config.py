@@ -25,7 +25,7 @@ import typing
 from functools import wraps
 from types import MethodType
 from omegaconf import DictConfig, OmegaConf
-from shared.structures import Singleton
+from ..structures import Singleton
 
 
 config = None  # pylint: disable=invalid-name
