@@ -105,4 +105,6 @@ class GetHydraConfig:
 
         Returns (typing.Any):
         """
+        if instance is None:
+            return self
         return self.__class__(MethodType(self._decorated_func, instance))
