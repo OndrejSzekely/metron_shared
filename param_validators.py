@@ -8,7 +8,7 @@ from typing import Any, Union
 import typeguard
 
 
-def type_check(variable: Any, expected_type: Any) -> None:
+def check_type(variable: Any, expected_type: Any) -> None:
     """
     Validates if given <variable> is type of <expected_type>.
 
@@ -25,7 +25,7 @@ def type_check(variable: Any, expected_type: Any) -> None:
     typeguard.check_type("variable", variable, expected_type)
 
 
-def file_existence_check(file_path: str) -> None:
+def check_file_existence(file_path: str) -> None:
     """
     Validates if file path exists and is a file.
 
@@ -44,7 +44,7 @@ def file_existence_check(file_path: str) -> None:
         raise OSError(f"Path `{file_path}` exists but it is not a file.")
 
 
-def folder_existence_check(folder_path: str) -> None:
+def check_folder_existence(folder_path: str) -> None:
     """
     Validates if file path exists and is a folder.
 
@@ -63,7 +63,7 @@ def folder_existence_check(folder_path: str) -> None:
         raise OSError(f"Path `{folder_path}` exists but it is not a folder.")
 
 
-def parameter_value_in_range(
+def check_parameter_value_in_range(
     param_value: Union[int, float], lower_bound: Union[int, float], upper_bound: Union[int, float]
 ) -> None:
     """
