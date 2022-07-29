@@ -4,7 +4,7 @@ parameters, except validation of YAML config parameters.
 """
 
 import os
-from typing import Any, Union
+from typing import Any, Union, List
 import typeguard
 
 
@@ -84,3 +84,21 @@ def check_parameter_value_in_range(
     check_type(upper_bound, (int, float))
     if param_value < lower_bound or param_value > upper_bound:
         raise ValueError(f"Given `{param_value}` is out of the allowed range" f" <{lower_bound}, {upper_bound}>.")
+
+def check_length_of_list(list: List[Any], expected_list_len: int) -> None:
+    """
+    Checks if a given list has expected number of items.
+
+    Args:
+        list (List[Any]): List to be checked.
+        expected_list_len (int): Number of items the list has to contain.
+
+    Returns: None
+
+    Exceptions:
+        ValueError: If the list has mismatched number of items.
+    """
+    check_type(list, List[Any])
+    check_type(expected_list_len, int)
+    if len(list) != expected_list_len:
+        raise ValueError(f"Given list `{list}` does not have expected `{expected_list_len}` items.")
