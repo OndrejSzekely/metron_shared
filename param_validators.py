@@ -37,7 +37,7 @@ def check_file_existence(file_path: str) -> None:
     Exceptions:
         OSError: If file does not exist or path is not a file.
     """
-    type_check(file_path, str)
+    check_type(file_path, str)
     if not os.path.exists(file_path):
         raise OSError(f"Path `{file_path}` does not exist.")
     if not os.path.isfile(file_path):
@@ -56,7 +56,7 @@ def check_folder_existence(folder_path: str) -> None:
     Exceptions:
         OSError: If file does not exist or path is not a folder.
     """
-    type_check(folder_path, str)
+    check_type(folder_path, str)
     if not os.path.exists(folder_path):
         raise OSError(f"Path `{folder_path}` does not exist.")
     if os.path.isfile(folder_path):
@@ -79,8 +79,8 @@ def check_parameter_value_in_range(
     Exceptions:
         ValueError: If value is not in the range.
     """
-    type_check(param_value, (int, float))
-    type_check(lower_bound, (int, float))
-    type_check(upper_bound, (int, float))
+    check_type(param_value, (int, float))
+    check_type(lower_bound, (int, float))
+    check_type(upper_bound, (int, float))
     if param_value < lower_bound or param_value > upper_bound:
         raise ValueError(f"Given `{param_value}` is out of the allowed range" f" <{lower_bound}, {upper_bound}>.")
