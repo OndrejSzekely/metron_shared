@@ -7,7 +7,7 @@ from enum import Enum
 from typing import Any
 import hydra
 from omegaconf import DictConfig
-import param_validators as param_val
+from .. import param_validators as param_val
 
 
 class HydraInstantiateConversion(Enum):
@@ -38,5 +38,5 @@ def instantiate_from_hydra_config(
     """
     param_val.check_type(hydra_object_config, DictConfig)
     param_val.check_type(conversion, HydraInstantiateConversion)
-    
+
     return hydra.utils.instantiate(hydra_object_config, _convert_=conversion.value, **kwargs)
