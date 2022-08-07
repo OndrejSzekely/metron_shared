@@ -22,7 +22,7 @@ class HydraInstantiateConversion(Enum):
 
 
 def instantiate_from_hydra_config(
-    hydra_object_config: Union[DictConfig, Dict[Any]],
+    hydra_object_config: Union[DictConfig, Dict[str, Any]],
     conversion: HydraInstantiateConversion = HydraInstantiateConversion.NO_CONVERSION,
     **kwargs
 ) -> Any:
