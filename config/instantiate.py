@@ -36,7 +36,7 @@ def instantiate_from_hydra_config(
         **kwargs: Key-worded arguments which are passed into a constructor of the instantiated class.
     Returns (Any): Instantiated object.
     """
-    param_val.check_type(hydra_object_config, Union[DictConfig, Dict[Any]])
+    param_val.check_type(hydra_object_config, Union[DictConfig, Dict[str, Any]])
     param_val.check_type(conversion, HydraInstantiateConversion)
 
     return hydra.utils.instantiate(hydra_object_config, _convert_=conversion.value, **kwargs)
