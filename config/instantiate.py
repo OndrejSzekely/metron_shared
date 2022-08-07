@@ -4,7 +4,7 @@ Instantiation from Hydra Config.
 
 
 from enum import Enum
-from typing import Any
+from typing import Any, Union, Dict, Any
 import hydra
 from omegaconf import DictConfig
 from .. import param_validators as param_val
@@ -22,7 +22,7 @@ class HydraInstantiateConversion(Enum):
 
 
 def instantiate_from_hydra_config(
-    hydra_object_config: DictConfig,
+    hydra_object_config: Union[DictConfig, Dict[Any]],
     conversion: HydraInstantiateConversion = HydraInstantiateConversion.NO_CONVERSION,
     **kwargs
 ) -> Any:
@@ -30,7 +30,7 @@ def instantiate_from_hydra_config(
     Instantiates object from Hydra object config <hydra_object_config>. It has to contain <_target_> attribute.
 
     Args:
-        hydra_object_config (DictConfig): Object's Hydra config DictConfig.
+        hydra_object_config (Union[DictConfig, Dict[Any]]): Object's Hydra config DictConfig or Dict created from that.
         conversion (HydraInstantiateConversion): Defined how non-primitive values in OmegaConf are handled.
             See https://hydra.cc/docs/advanced/instantiate_objects/overview/#parameter-conversion-strategies.
         **kwargs: Key-worded arguments which are passed into a constructor of the instantiated class.
