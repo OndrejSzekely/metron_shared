@@ -85,6 +85,7 @@ def check_parameter_value_in_range(
     if param_value < lower_bound or param_value > upper_bound:
         raise ValueError(f"Given `{param_value}` is out of the allowed range" f" <{lower_bound}, {upper_bound}>.")
 
+
 def check_length_of_list(list: List[Any], expected_list_len: int) -> None:
     """
     Checks if a given list has expected number of items.
