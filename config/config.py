@@ -25,7 +25,9 @@ import typing
 from functools import wraps
 from types import MethodType
 from omegaconf import DictConfig, OmegaConf
-from ..structures import Singleton
+
+# Relative import beyond the top level is allowed, because still sits in the `metron_shared` package.
+from ..structures import Singleton  # pylint: disable=relative-beyond-top-level
 
 
 config = None  # pylint: disable=invalid-name

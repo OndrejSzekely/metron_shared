@@ -4,10 +4,12 @@ Instantiation from Hydra Config.
 
 
 from enum import Enum
-from typing import Any, Union, Dict, Any
+from typing import Any, Union, Dict
 import hydra
 from omegaconf import DictConfig
-from .. import param_validators as param_val
+
+# Relative import beyond the top level is allowed, because still sits in the `metron_shared` package.
+from .. import param_validators as param_val  # pylint: disable=relative-beyond-top-level
 
 
 class HydraInstantiateConversion(Enum):
@@ -24,7 +26,7 @@ class HydraInstantiateConversion(Enum):
 def instantiate_from_hydra_config(
     hydra_object_config: Union[DictConfig, Dict[str, Any]],
     conversion: HydraInstantiateConversion = HydraInstantiateConversion.NO_CONVERSION,
-    **kwargs
+    **kwargs: Any
 ) -> Any:
     """
     Instantiates object from Hydra object config <hydra_object_config>. It has to contain <_target_> attribute.
