@@ -4,3 +4,5 @@ external/
 .devcontainer/secrets
 .ruff_cache
 .env
+build/
+*.egg-info/
