@@ -22,7 +22,7 @@ def check_type(variable: Any, expected_type: Any) -> None:
         TypeError: Raised if <variable> is not type of <expected_type>.
 
     """
-    typeguard.check_type("variable", variable, expected_type)
+    typeguard.check_type(variable, expected_type)
 
 
 def check_file_existence(file_path: str) -> None:
