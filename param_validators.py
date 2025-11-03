@@ -8,7 +8,7 @@ from typing import Any, Union, List
 import typeguard
 
 
-def check_type(variable: Any, expected_type: Any) -> None:
+def check_type(variable: Any, expected_type: Any) -> bool:
     """
     Validates if given <variable> is type of <expected_type>.
 
@@ -23,9 +23,10 @@ def check_type(variable: Any, expected_type: Any) -> None:
 
     """
     typeguard.check_type(variable, expected_type)
+    return True
 
 
-def check_file_existence(file_path: str) -> None:
+def check_file_existence(file_path: str) -> bool:
     """
     Validates if file path exists and is a file.
 
@@ -42,9 +43,10 @@ def check_file_existence(file_path: str) -> None:
         raise OSError(f"Path `{file_path}` does not exist.")
     if not os.path.isfile(file_path):
         raise OSError(f"Path `{file_path}` exists but it is not a file.")
+    return True
 
 
-def check_folder_existence(folder_path: str) -> None:
+def check_folder_existence(folder_path: str) -> bool:
     """
     Validates if file path exists and is a folder.
 
@@ -61,11 +63,12 @@ def check_folder_existence(folder_path: str) -> None:
         raise OSError(f"Path `{folder_path}` does not exist.")
     if os.path.isfile(folder_path):
         raise OSError(f"Path `{folder_path}` exists but it is not a folder.")
+    return True
 
 
 def check_parameter_value_in_range(
     param_value: Union[int, float], lower_bound: Union[int, float], upper_bound: Union[int, float]
-) -> None:
+) -> bool:
     """
     Checks if parameter value is in range <<lower_bound>, <upper_bound>>.
 
@@ -84,9 +87,10 @@ def check_parameter_value_in_range(
     check_type(upper_bound, (int, float))
     if param_value < lower_bound or param_value > upper_bound:
         raise ValueError(f"Given `{param_value}` is out of the allowed range" f" <{lower_bound}, {upper_bound}>.")
+    return True
 
 
-def check_length_of_list(list_instance: List[Any], expected_list_len: int) -> None:
+def check_length_of_list(list_instance: List[Any], expected_list_len: int) -> bool:
     """
     Checks if a given list has expected number of items.
 
@@ -103,3 +107,4 @@ def check_length_of_list(list_instance: List[Any], expected_list_len: int) -> No
     check_type(expected_list_len, int)
     if len(list_instance) != expected_list_len:
         raise ValueError(f"Given list `{list_instance}` does not have expected `{expected_list_len}` items.")
+    return True
